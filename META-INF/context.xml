@@ -1,0 +1,17 @@
+<Context>
+    <!-- Resources (in resource tags) has a unique name -->
+    <Resource name="jdbc/MyConnection"
+        type="javax.sql.DataSource"
+        maxActive="10"
+        maxIdle="5"
+        username="jdbcUser"
+        password="mySecur3Passw0rd!"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://localhost\MYSQLEXPRESS;databaseName=SENG2050_A3" />
+</Context>
+
+<!-- type - Create data source -->
+<!-- maxActive - How many active connections this pool can have -->
+<!-- maxIdle - How many idle connections it must maintain at any times -->
+<!-- Username + password for login -->
+<!-- driveClassName - Responsible for connecting to SQL server -->

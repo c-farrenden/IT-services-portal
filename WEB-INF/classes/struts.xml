@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts
+Configuration 2.5//EN" "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.action.extension" value="action" />
+
+    <!-- STRUTS2 groups actions into packages. A package may have a URL prefix -->
+    <package name="default" extends="struts-default">
+
+        <!-- Define interceptors here -->
+        <interceptors>
+            <interceptor name="myLogging" class="app.LoggingInterceptor"></interceptor>
+            <interceptor-stack name="myStack">
+                <interceptor-ref name="defaultStack"></interceptor-ref>
+                <interceptor-ref name="myLogging"></interceptor-ref>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="myStack"></default-interceptor-ref>
+
+        <!--The default actions which we execute -->
+        <default-action-ref name="index" />
+
+        <!-- Define actions here -->
+        <action name="index" class="app.IndexAction">
+            <result name="success">/WEB-INF/jsps/index-success.jsp</result>
+        </action>
+
+        <action name="register" class="app.RegisterAction">
+            <result name="success">/WEB-INF/jsps/register-success.jsp</result>
+            <result name="input">/WEB-INF/jsps/register-input.jsp</result>
+        </action>
+    </package>
+</struts>
